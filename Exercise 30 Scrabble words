@@ -1,0 +1,45 @@
+# http://www.practicepython.org/exercise/2016/09/24/30-pick-word.html
+# 
+# ________________________________________________________________________________________
+
+def line_to_word( linein  ) : 
+	
+	linein = linein.rstrip()
+	linein = linein.rstrip(" ")
+	s = linein
+		
+	return( s )
+
+# ___________________________________________________________________________________________________________
+
+import random 		
+	
+
+if __name__ == "__main__":
+	 
+	# read in file of words and strip off any extras and assemble a list
+	# repeat until user says stop
+	#		display a random word from list  | see if user wants to continue 
+	
+	wlist = [] 
+	fname = "Ex_030_Input_Scrabble_Words.txt"
+	
+	print("Reading... ")
+	with open( fname , 'r') as f:
+		line = f.readline()
+		while ( line ):
+			word = line_to_word( line )
+			wlist.append( word )
+			line = f.readline()
+
+	# print(" entire list of words  : ", wlist)
+	
+	carryon = True 
+	while ( carryon ) : 
+		ri = random.randint( 0, len(wlist) ) 
+		print("Random selection from Scrabble wordlist :", wlist[ri] )
+		letter = input(" \n\n  Enter [c] to continue - anything else to stop ")
+		if letter != 'c' :
+			carryon = False
+		
+	print(" - Done -   number words in file = ", len( wlist )  )
